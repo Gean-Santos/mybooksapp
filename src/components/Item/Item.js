@@ -1,17 +1,23 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Wrapper, ImageView, TextView, Title, Footer } from './Item.styles';
+import { TouchableOpacity } from 'react-native';
+import { Wrapper, ImageView, TextView, Title, Footer, Author } from './Item.styles';
 
-const Item = ({item}) => {
+const Item = ({item, onClick}) => {
     return(
-        <Wrapper>
-            <ImageView />
+        <TouchableOpacity onPress={() => onClick()}>
+                <Wrapper>
+            <ImageView 
+                source={{uri: item.url}}
+                resizeMethod='resize'
+            />
             <TextView>
                 <Title>{item.title}</Title>
-                <Text>{item.Author}</Text>
-                <Footer>{item.Year}</Footer>
+                <Author>{item.Author}</Author>
+                <Footer>Ano da edição : {item.Year}</Footer>
             </TextView>
         </Wrapper>
+        </TouchableOpacity>
+        
     );
 };
 
