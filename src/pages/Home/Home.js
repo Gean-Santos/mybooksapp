@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, SafeAreaView, ScrollView, TextInput, Alert, Image } from 'react-native';
-import { Item } from '../../components';
+import { View, ScrollView, Alert } from 'react-native';
+import { Item, DefaultButton } from '../../components';
+
+import { Wrapper, ImageView, Image, Input, ItemsView, DarkIcon } from './Home.styles';
+
 import axios from 'axios';
 import config from '../../services/api/config';
 
 
 const Home = () => {
     const [books, setBooks] = useState([]);
+    const [darkScreen, setDarkScreen] = useState(false);
     const url = config.url_dev+'books';
 
     useEffect(async() => {
@@ -14,23 +18,44 @@ const Home = () => {
         .then(data => setBooks(data.data));
     }, []);
 
+
     const bookClick = (synopsis, title) => {Alert.alert(title, synopsis)}
+    const onDarkClick = () => {
+        setDarkScreen(!darkScreen);
+    };
     return(
-        <SafeAreaView style={{display: 'flex', flex: 1, backgroundColor:'#FFF'}}>
-            <View style={{width:'100%', display: 'flex', alignItems: 'center'}}>
+        <Wrapper isDark={darkScreen}>
+            <ImageView>
                 <Image 
                     source={{uri: 'https://user-images.githubusercontent.com/37232748/134752470-85b65c9b-b909-49f4-98da-65c085b785f3.jpeg'}}
-                    style={{height: 100, width: 150, display: 'flex', margin:10}}
                 />
+                
+            </ImageView>
+            {darkScreen ? 
+                <DarkIcon name='lightbulb' size={30}  onPress={() => onDarkClick()} isDark={true} /> : 
+                <DarkIcon name='lightbulb-outline' size={30}  onPress={() => onDarkClick()} isDark={false} />
+            }
+            
+            <Input isDark={darkScreen} 
+                placeholder='Procurar por livro'
+                placeholderTextColor='yellow'
+            />
+            
+            <ItemsView isDark={darkScreen}>
+                <View style={{display: 'flex', flex: 1, height: '100%'}}>
+                    {books.map((livro, index) => (<View style={{padding: 5, width: '100%'}} key={index}><Item item={livro} onClick={() => bookClick(livro.synopsis, livro.title)} /></View>))}
+                </View>
+                
+            </ItemsView>
+            <View style={{display: 'flex', width: '100%', alignItems: 'flex-start'}}>
+            <DefaultButton 
+                title='+' 
+                onCLick={() => alert('Foi')} 
+                
+            />
             </View>
             
-            <TextInput  style={{borderColor: 'blue', borderWidth: 2,padding: 10, margin: 10, borderRadius: 10}}/>
-            <ScrollView>
-                <View>
-                    {books.map((livro, index) => (<View style={{padding: 5, width: '100%',}} key={index}><Item item={livro} onClick={() => bookClick(livro.synopsis, livro.title)} /></View>))}
-                </View>
-            </ScrollView>
-        </SafeAreaView>
+        </Wrapper>
         
     );
 };

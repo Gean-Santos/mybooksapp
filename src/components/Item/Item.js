@@ -13,7 +13,7 @@ const Item = ({item, onClick}) => {
             <TextView>
                 <Title>{item.title}</Title>
                 <Author>{item.author}</Author>
-                <Footer>Número : {item.number}</Footer>
+                <Footer>Ano : {item.year}</Footer>
             </TextView>
         </Wrapper>
         </TouchableOpacity>

@@ -4,12 +4,12 @@ export const Wrapper = styled.View`
     display: flex;
     flex: 1;
     flex-direction: row;
-    background-color: #808080;
+    background-color: rgba(0, 0, 255, 1);
     border-radius: 20px;
-    margin: 5px 16px;
-    height: 140px;
+    margin: 5px ;
     border: solid 2px;
-    border-color: #120A8F;
+    border-color: blue;
+    height: 120px;
 `;
 export const ImageView = styled.Image`
     height: 100%;
@@ -32,14 +32,14 @@ export const Title = styled.Text`
     display: flex;
     font-size: 18px;
     font-weight: bold;
-    color: #000;
+    color: rgba(254, 254, 90, 1);
     text-align: center;
     
 `;
 export const Author = styled.Text`
     display: flex;
     font-size: 16px;
-    color: #000;
+    color: #FFF;
     text-align: center;
 
     
@@ -48,6 +48,6 @@ export const Author = styled.Text`
 export const Footer = styled.Text`
     font-size: 16px;
     font-weight: bold;
-    color: #120A8F;
+    color: #FFF;
     text-align: center;
 `;
