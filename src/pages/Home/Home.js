@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Alert } from 'react-native';
-import { Item, DefaultButton } from '../../components';
+import { View, Alert } from 'react-native';
+import { Item, PlusButton } from '../../components';
 
 import { Wrapper, ImageView, Image, Input, ItemsView, DarkIcon } from './Home.styles';
 
@@ -8,7 +8,7 @@ import axios from 'axios';
 import config from '../../services/api/config';
 
 
-const Home = () => {
+const Home = ({navigation}) => {
     const [books, setBooks] = useState([]);
     const [darkScreen, setDarkScreen] = useState(false);
     const url = config.url_dev+'books';
@@ -48,10 +48,10 @@ const Home = () => {
                 
             </ItemsView>
             <View style={{display: 'flex', width: '100%', alignItems: 'flex-start'}}>
-            <DefaultButton 
-                title='+' 
-                onCLick={() => alert('Foi')} 
-                
+            <PlusButton
+                isDark={darkScreen}
+                title='+'
+                onCLick={() => navigation.navigate('AddBook')}
             />
             </View>
             

@@ -6,7 +6,7 @@ export const Button = styled.TouchableOpacity`
     bottom: 10px;
     justifyContent: center;
     alignItems: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: ${({ isDark }) => (isDark ? 'black' : 'rgba(255, 255, 255, 1)')};
     align-items: center;
     justify-content: center;
     height: 50px;
@@ -16,7 +16,7 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const Text = styled.Text`
-    color: rgba(0, 0, 0, 0.9);
+    color: ${({ isDark }) => (isDark ? 'white' : 'rgba(0, 0, 0, 1)')};
     font-size: 20px;
     font-weight: bold;
 `;

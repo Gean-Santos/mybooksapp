@@ -9,25 +9,27 @@ export const Wrapper = styled.View`
     margin: 5px ;
     border: solid 2px;
     border-color: blue;
-    height: 120px;
+    height: 80px;
 `;
+
 export const ImageView = styled.Image`
     height: 100%;
-    padding-right: 10px;
-    width: 40%;
+    width: 30%;
     display: flex;
     justify-content: center;
     border-radius: 20px;
 
 `;
+
 export const TextView = styled.View`
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px;
+    padding: 10px;
     width: 40%;
 `;
+
 export const Title = styled.Text`
     display: flex;
     font-size: 18px;
@@ -41,8 +43,6 @@ export const Author = styled.Text`
     font-size: 16px;
     color: #FFF;
     text-align: center;
-
-    
 `;
 
 export const Footer = styled.Text`
