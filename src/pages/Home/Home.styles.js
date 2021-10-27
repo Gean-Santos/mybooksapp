@@ -52,5 +52,5 @@ export const ItemsView = styled.ScrollView`
     borderRadius: 16px;
     margin-top: 10px; 
     borderWidth: 2px; 
-    border-color: ${({ isDark }) => (isDark ? 'yellow' : 'black')};
+    border-color: ${({ isDark }) => (isDark ? 'white' : 'black')};
 `;

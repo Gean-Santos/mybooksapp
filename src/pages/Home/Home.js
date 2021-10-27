@@ -7,6 +7,15 @@ import { Wrapper, ImageView, Image, Input, ItemsView, DarkIcon } from './Home.st
 import axios from 'axios';
 import config from '../../services/api/config';
 
+const ItemsList = ({book, index}) => {
+    const bookClick = (synopsis, title) => {Alert.alert(title, synopsis)}
+    return(
+        <View style={{padding: 5, width: '100%'}} key={index}>
+            <Item item={book} onClick={() => bookClick(book.synopsis, book.title)} />
+        </View>
+    );
+};
+
 
 const Home = ({navigation}) => {
     const [books, setBooks] = useState([]);
@@ -18,8 +27,6 @@ const Home = ({navigation}) => {
         .then(data => setBooks(data.data));
     }, []);
 
-
-    const bookClick = (synopsis, title) => {Alert.alert(title, synopsis)}
     const onDarkClick = () => {
         setDarkScreen(!darkScreen);
     };
@@ -43,9 +50,8 @@ const Home = ({navigation}) => {
             
             <ItemsView isDark={darkScreen}>
                 <View style={{display: 'flex', flex: 1, height: '100%'}}>
-                    {books.map((livro, index) => (<View style={{padding: 5, width: '100%'}} key={index}><Item item={livro} onClick={() => bookClick(livro.synopsis, livro.title)} /></View>))}
+                    {books.map((livro, index) => (<ItemsList book={livro} index={index} />))}
                 </View>
-                
             </ItemsView>
             <View style={{display: 'flex', width: '100%', alignItems: 'flex-start'}}>
             <PlusButton

@@ -44,10 +44,3 @@ export const Author = styled.Text`
     color: #FFF;
     text-align: center;
 `;
-
-export const Footer = styled.Text`
-    font-size: 16px;
-    font-weight: bold;
-    color: #FFF;
-    text-align: center;
-`;
